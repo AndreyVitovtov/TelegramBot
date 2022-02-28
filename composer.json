@@ -1,0 +1,23 @@
+{
+  "name": "andre/telegram-bot",
+  "authors": [
+    {
+      "name": "Andrey Vitovtov",
+      "email": "andrey.vitovtov@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Core\\": "core"
+    },
+    "files": [
+      "core\\config.php"
+    ]
+  },
+  "require": {
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-pdo": "*",
+    "php": "^7.1"
+  }
+}
