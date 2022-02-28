@@ -6,7 +6,7 @@ use app\models\InlineButtons;
 use app\models\Text;
 use core\BaseRequestHandler;
 
-class RequestHandler extends BaseRequestHandler
+class RequestHandlerBot extends BaseRequestHandler
 {
     use MethodsFromGroupAndChat;
 
