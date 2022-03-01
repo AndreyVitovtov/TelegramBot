@@ -1,22 +1,14 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
-use core\Database;
-use PDO;
+use App\Core\Database;
 
 class Interaction
 {
-    private static PDO $db;
-
-    public function __construct()
-    {
-        self::$db = Database::instance()->getDbh();
-    }
-
     public static function get($chat)
     {
-        $stmt = self::$db->prepare("
+        $stmt = Database::instance()->getDbh()->prepare("
             SELECT `command`, `params` 
             FROM `interaction` 
             WHERE `chat` = :chat
@@ -30,7 +22,7 @@ class Interaction
     public static function set($chat, $command = null, $params = null)
     {
         self::delete($chat);
-        $stmt = self::$db->prepare("
+        $stmt = Database::instance()->getDbh()->prepare("
             INSERT INTO `interaction` (
                `chat`, `command`, `params`
             ) VALUES (

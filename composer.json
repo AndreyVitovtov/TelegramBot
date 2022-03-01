@@ -8,10 +8,14 @@
   ],
   "autoload": {
     "psr-4": {
-      "Core\\": "core"
+      "App\\": "app/",
+      "App\\Core\\": "app/core/",
+      "App\\Controllers\\": "app/controllers/",
+      "App\\Models\\": "app/models/",
+      "Database\\": "database/"
     },
     "files": [
-      "core\\config.php"
+      "app\\core\\config.php"
     ]
   },
   "require": {

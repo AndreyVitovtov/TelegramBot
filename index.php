@@ -1,9 +1,10 @@
 <?php
 
-use app\controllers\RequestHandler;
+use App\Controllers\RequestHandlerBot;
 
 require_once "vendor/autoload.php";
 
-//(new RequestHandler())->setWebhook();
 
-(new RequestHandler())->execute();
+//(new RequestHandlerBot())->setWebhook();
+
+(new RequestHandlerBot())->execute();

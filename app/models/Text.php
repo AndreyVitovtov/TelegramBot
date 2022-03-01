@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
 /**
  * @method static example()
@@ -8,13 +8,6 @@ namespace app\models;
  */
 class Text
 {
-    private static string $filePath;
-
-    public function __construct($fileName = null)
-    {
-        self::$filePath = $_SERVER['DOCUMENT_ROOT'] . "/data/texts/" . ($fileName ?? "texts.json");
-    }
-
     public static function __callStatic($name, $arguments)
     {
         $texts = self::getTexts();
@@ -31,7 +24,7 @@ class Text
 
     public static function getTexts($associative = true)
     {
-        return json_decode(file_get_contents(self::$filePath), $associative);
+        return json_decode(file_get_contents(self::filePath()), $associative);
     }
 
     public static function array(array $buttons, array $n): array
@@ -45,5 +38,10 @@ class Text
             }
         }
         return $new_array;
+    }
+
+    private static function filePath($fileName = null): string
+    {
+        return $_SERVER['DOCUMENT_ROOT'] . "/data/texts/" . ($fileName ?? "texts.json");
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace App\Controllers;
 
-use app\models\InlineButtons;
-use app\models\Text;
-use core\BaseRequestHandler;
+use App\Core\BaseRequestHandler;
+use App\Models\InlineButtons;
+use App\Models\Text;
 
 class RequestHandlerBot extends BaseRequestHandler
 {

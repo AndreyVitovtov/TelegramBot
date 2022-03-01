@@ -1,13 +1,12 @@
 <?php
 
-namespace database;
+namespace Database;
 
-use core\Database;
-use PDO;
+use App\Core\Database;
 
 class CreateTables
 {
-    private PDO $db;
+    private $db;
 
     public function __construct()
     {

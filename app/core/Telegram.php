@@ -1,6 +1,6 @@
 <?php
 
-namespace core;
+namespace App\Core;
 
 use stdClass;
 
@@ -8,14 +8,14 @@ class Telegram
 {
     private $token;
     private $request;
-    private string $urlApi;
+    private $urlApi;
 
     public function __construct($token = null)
     {
         $this->token = $token ?? TELEGRAM_TOKEN;
 
         $request = @json_decode(file_get_contents('php://input'));
-        if (!$request) $request = new StdClass;
+        if (!$request) $request = new stdClass();
         if (is_object($request)) $this->request = $request;
         $this->urlApi = 'https://api.telegram.org/bot' . $this->token . '/';
     }
@@ -51,7 +51,7 @@ class Telegram
         }
     }
 
-    public function getRequest(): StdClass
+    public function getRequest(): stdClass
     {
         return $this->request;
     }

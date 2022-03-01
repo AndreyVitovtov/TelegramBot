@@ -1,18 +1,18 @@
 <?php
 
-namespace core;
+namespace App\Core;
 
-use app\models\Interaction;
-use app\models\Menu;
-use app\models\Text;
 use Exception;
+use App\Models\Interaction;
+use App\Models\Menu;
+use App\Models\Text;
 
 /**
  * @method methodFromGroupAndChat()
  */
 class BaseRequestHandler
 {
-    protected Telegram $telegram;
+    protected $telegram;
     protected $chat;
     protected $request;
     protected $type;
@@ -381,7 +381,7 @@ class BaseRequestHandler
         $this->send(Text::unknownTeam(), Menu::main());
     }
 
-    protected function getCommandFromMessage(string $message): array
+    protected function getCommandFromMessage(?string $message): array
     {
         $texts = Text::getTexts();
         $command = array_search($message, $texts);
