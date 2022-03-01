@@ -4,24 +4,25 @@ namespace App\Models;
 
 /**
  * @method static main()
+ * @method static start()
  */
-class Menu extends Buttons
+class Menu
 {
     public static function __callStatic($name, $arguments): array
     {
-        if (method_exists(self::class, $name)) {
-            return (new Menu)->replyMarkup(self::$name($arguments), $arguments);
+        if (method_exists(Buttons::class, $name)) {
+            return (new Menu)->replyMarkup(Buttons::$name($arguments), $arguments);
         } else {
-            return self::default();
+            return (new Menu)->replyMarkup(Buttons::default($arguments), $arguments);
         }
     }
 
     public function __call($name, $arguments): array
     {
-        if (method_exists($this, $name)) {
-            return $this->replyMarkup($this->$name($arguments), $arguments);
+        if (method_exists(Buttons::class, $name)) {
+            return $this->replyMarkup(Buttons::$name($arguments), $arguments);
         } else {
-            return self::default();
+            return (new Menu)->replyMarkup(Buttons::default($arguments), $arguments);
         }
     }
 

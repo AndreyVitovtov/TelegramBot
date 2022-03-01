@@ -10,6 +10,12 @@ class Buttons
     *******************
     */
 
+    public function start()
+    {
+        return [[
+            'start'
+        ]];
+    }
 
     /*
     *******************
@@ -17,6 +23,18 @@ class Buttons
     *******************
      */
 
+    public function example()
+    {
+        return [[
+            [
+                'text' => '{edit}',
+                'callback_data' => 'editDebtsToMe__'
+            ], [
+                'text' => '{delete}',
+                'callback_data' => 'deleteDebtsToMe__'
+            ]
+        ]];
+    }
 
     /*
     *******************
@@ -24,7 +42,7 @@ class Buttons
     *******************
     */
 
-    protected static function default(): array
+    public static function default(): array
     {
         return [];
     }

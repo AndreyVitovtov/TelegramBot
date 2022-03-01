@@ -2,10 +2,10 @@
 
 namespace App\Core;
 
-use Exception;
 use App\Models\Interaction;
 use App\Models\Menu;
 use App\Models\Text;
+use Exception;
 
 /**
  * @method methodFromGroupAndChat()
@@ -30,19 +30,22 @@ class BaseRequestHandler
         $this->callMethodIfExists();
     }
 
-    public function setWebhook()
+    public function setWebhook($url = null): string
     {
-        $this->telegram->setWebhook('https://' . $_SERVER['HTTP_HOST']);
+        if (!$url) {
+            $url = 'https://' . $_SERVER['HTTP_HOST'];
+        }
+        return $this->telegram->setWebhook($url);
     }
 
-    protected function sendTo($chat, $text, $buttons = [], $inline = false, $parseMode = 'HTML'): string
+    protected function sendTo($chat, $text, $buttons = [], $parseMode = 'HTML'): string
     {
-        return $this->telegram->sendMessage($chat, $text, $buttons, $inline, $parseMode);
+        return $this->telegram->sendMessage($chat, $text, $buttons, $parseMode);
     }
 
-    protected function send($text, $buttons = [], $inline = false, $parseMode = 'HTML'): string
+    protected function send($text, $buttons = [], $parseMode = 'HTML'): string
     {
-        return $this->sendTo($this->chat, $text, $buttons, $inline, $parseMode);
+        return $this->sendTo($this->chat, $text, $buttons, $parseMode);
     }
 
     protected function getMessage(): ?string
@@ -98,6 +101,7 @@ class BaseRequestHandler
 
     protected function getDataByType(): ?array
     {
+        $this->getType();
         if (!$this->request) return [];
         if ($this->type == "text") {
             return [
@@ -378,7 +382,7 @@ class BaseRequestHandler
     protected function unknownTeam()
     {
         if (substr($this->getMessage(), 0, 4) == "http") return;
-        $this->send(Text::unknownTeam(), Menu::main());
+        echo $this->send(Text::unknownTeam(), Menu::main());
     }
 
     protected function getCommandFromMessage(?string $message): array

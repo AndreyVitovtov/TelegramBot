@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\BaseRequestHandler;
 use App\Models\InlineButtons;
+use App\Models\Menu;
 use App\Models\Text;
 
 class RequestHandlerBot extends BaseRequestHandler
@@ -18,8 +19,7 @@ class RequestHandlerBot extends BaseRequestHandler
     public function start()
     {
         // EXAMPLE
-        $this->send(Text::example(), InlineButtons::example());
-        $this->send(Text::example(), InlineButtons::custom(
+        echo $this->send(Text::example(), InlineButtons::custom(
             [[
                 'id' => 1,
                 'name' => 'Test1'

@@ -15,9 +15,15 @@ class Telegram
         $this->token = $token ?? TELEGRAM_TOKEN;
 
         $request = @json_decode(file_get_contents('php://input'));
+        $this->setRequest();
         if (!$request) $request = new stdClass();
         if (is_object($request)) $this->request = $request;
         $this->urlApi = 'https://api.telegram.org/bot' . $this->token . '/';
+    }
+
+    private function setRequest()
+    {
+        file_put_contents('data/request.json', file_get_contents('php://input'));
     }
 
     public function getChat()

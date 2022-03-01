@@ -5,23 +5,23 @@ namespace App\Models;
 /**
  * @method static example()
  */
-class InlineButtons extends Buttons
+class InlineButtons
 {
     public static function __callStatic($name, $arguments): array
     {
-        if (method_exists(self::class, $name)) {
-            return (new InlineButtons)->replyMarkup(self::$name($arguments), $arguments);
+        if (method_exists(Buttons::class, $name)) {
+            return (new InlineButtons)->replyMarkup(Buttons::$name($arguments), $arguments);
         } else {
-            return self::default();
+            return (new InlineButtons)->replyMarkup(Buttons::default($arguments), $arguments);
         }
     }
 
     public function __call($name, $arguments): array
     {
-        if (method_exists($this, $name)) {
-            return $this->replyMarkup($this->$name($arguments), $arguments);
+        if (method_exists(Buttons::class, $name)) {
+            return $this->replyMarkup(Buttons::$name($arguments), $arguments);
         } else {
-            return self::default();
+            return (new InlineButtons)->replyMarkup(Buttons::default($arguments), $arguments);
         }
     }
 

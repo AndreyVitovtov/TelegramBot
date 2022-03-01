@@ -1,5 +1,7 @@
 {
   "name": "andre/telegram-bot",
+  "type": "project",
+  "license": "MIT",
   "authors": [
     {
       "name": "Andrey Vitovtov",
@@ -15,7 +17,7 @@
       "Database\\": "database/"
     },
     "files": [
-      "app\\core\\config.php"
+      "app\\config.php"
     ]
   },
   "require": {

@@ -42,6 +42,6 @@ class Text
 
     private static function filePath($fileName = null): string
     {
-        return $_SERVER['DOCUMENT_ROOT'] . "/data/texts/" . ($fileName ?? "texts.json");
+        return "data/texts/" . ($fileName ?? "texts.json");
     }
 }
