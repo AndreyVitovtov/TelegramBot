@@ -17,7 +17,8 @@
       "Database\\": "database/"
     },
     "files": [
-      "app\\config.php"
+      "app\\config.php",
+      "app\\core\\functions.php"
     ]
   },
   "require": {
